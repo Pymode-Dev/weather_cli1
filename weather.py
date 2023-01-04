@@ -31,5 +31,8 @@ def fetch_weather_data(url: str) -> dict:
     :param url:
     :return:
     """
-    query = requests.get(url)
-    return query.json()
+    try:
+        query = requests.get(url)
+        return query.json()
+    except ConnectionError:
+        print("No Internet Connection")
